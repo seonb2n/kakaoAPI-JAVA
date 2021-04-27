@@ -10,7 +10,7 @@ public class searchMain {
 	public static void main(String[] args) {
 		
 		String APIKEY = "0badefdcbbc22dd6ec5c768ea1442ec5";
-		int display = 5;
+		int display = 10;
 		
         try {
         	String location = URLEncoder.encode("Ω≈√Ã ∏¿¡˝","UTF-8");
@@ -46,8 +46,6 @@ public class searchMain {
              String[] array;
              array = data.split("\"");
              
-             System.out.println(array.length);
-             
              String[] title = new String[display];
              String[] link = new String[display];
              
@@ -56,12 +54,18 @@ public class searchMain {
              for (int i = 0; i < array.length; i++) {
                  if (array[i].equals("place_name"))
                      title[k] = array[i + 2];
-                 if (array[i].equals("place_url"))
+                 if (array[i].equals("place_url")) {
                      link[k] = array[i + 2];
                      k++;
+                 	}
                  }
              
-             System.out.println(title[0]);
+             for(int i = 0; i < display; i++) {
+            	 System.out.println(title[i]);
+            	 System.out.println(link[i]);
+             }
+
+
         	
 		}catch (Exception e) {
         	System.out.println(e);
